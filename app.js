@@ -4,8 +4,10 @@ let a = [];
 let div;
 let n = numb.innerText;
 let r = rand.innerText;
-arrGen(n);
-barGen(n);
+arrGen(n);   //initial array generation
+barGen(n);   //initial bar generation
+
+
 
 function barGen(k, b1, b2) {
     let barWidth = 1;
@@ -34,6 +36,7 @@ function barGen(k, b1, b2) {
         if (barWidth >= 20)
             div.innerHTML = "<span class='rnum'>" + a[i] + "</span>";
         let bar = document.getElementById("action");
+        //coloring b1 and b2
         if (i == b1) {
             div.style.backgroundColor = "green";
         }
@@ -55,16 +58,18 @@ function arrGen(k) {
     }
 }
 
+//deleting array
 function delArr() {
     a = [];
 }
-
+//deleting bars
 function barDel() {
     let delB = document.getElementById("action");
     while (delB.firstChild)
         delB.removeChild(delB.firstChild);
 }
 
+//counter
 function incdec(i) {
     console.log(r);
     if (i == 1 && n < 220) {
@@ -93,6 +98,7 @@ function incdec(i) {
     rand.innerText = r;
 }
 
+//clear or reset
 function cl(j) {
     if (j == 0) {
         n = 4;
@@ -107,6 +113,7 @@ function cl(j) {
 
 }
 
+//bubble sort and speed control
 function bubS() {
     let s = 10;
     x = setInterval(function () {
@@ -118,6 +125,7 @@ function bubS() {
     console.log(a);
 }
 
+//swaping 
 function swap(arr, first_Index, second_Index) {
     var temp = arr[first_Index];
     arr[first_Index] = arr[second_Index];
@@ -126,6 +134,7 @@ function swap(arr, first_Index, second_Index) {
     barGen(n, first_Index, second_Index);
 }
 
+//bubble sort algorithm
 function bubbleSort(arr) {
 
     var len = arr.length,
