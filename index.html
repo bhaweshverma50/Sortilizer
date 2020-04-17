@@ -1,35 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Application</title>
     <link rel="stylesheet" href="style.css">
-    <title>Visualizer</title>
 </head>
 
-<!-- body start from here -->
-
 <body>
-    <header>
-        <h3>IilIi</h3>
-        <nav>
-            <div class="container">
-                <span class="next" onclick="incdec(1)"></span>
-                <span class="prev" onclick="incdec(-1)"></span>
-                <div id="box"></div>
-                <span class="num" id="num">4</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Sortlizer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary enabled" onclick="bubS()">Sort</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu" id="listel">
+                            <a class="dropdown-item" href="#">Bubble Sort</a>
+                            <a class="dropdown-item" href="#">Quick Sort</a>
+                            <a class="dropdown-item" href="#">Insertion Sort</a>
+                            <a class="dropdown-item" href="#">Selection Sort</a>
+                            <a class="dropdown-item" href="#">Merge Sort</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <input type="range" min="-1500" max="-10" value="4" id="speed" class="slider">
+                <p>Speed: <span id="Svalue"></span></p>
             </div>
-        </nav>
-        <div class="sort" onclick="bubS()">Sort</div>
-        <div class="reset" onclick="cl(0)">Reset</div>
-    </header>
-    <div id="action"></div>
-    <div class="credits">
-        <span id="h4">Made By &copy; Bhawesh Kr. Verma & Abhishek Kr. Yadav | 2020</span>
-    </div>
-    <script src="app.js"></script>
+            <div>
+                <input type="range" min="4" max="200" value="4" id="myRange" class="slider">
+                <p>Bars: <span id="value"></span></p>
+            </div>
+        </div>
+    </nav>
 </body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script src="app.js"></script>
 
 </html>
