@@ -106,3 +106,51 @@ p {
     align-items: center;
     transform: rotate(180deg);
 }
+
+
+
+
+/* logo css */
+.logo
+  {
+    font-family: 'Big Shoulders Display';
+    font-size: 24px;
+    color: whitesmoke;
+    font-weight: bold;
+    display: inline-flex;
+    margin: 0;
+    padding: 5px;
+    width: 38vh;
+  }
+
+  .logo .hide, .hide1
+  {
+
+    display: inline-flex;
+    overflow: hidden;
+    color: inherit;
+    font-family: inherit;
+    transition: 1s;
+  }
+  .hide{width: 0;}
+  .hide1{max-width: 0;}
+  .logo:hover .hide
+  {
+    overflow: hidden;
+    position: relative;
+    transition: 1s;
+    width: 50px;
+  }
+
+
+  .logo:hover .hide1
+  {
+    position: relative;
+    max-width: 80px;
+    transition: max-width 1s;
+  }
+
+  .logo:hover
+  {
+    transition: 0.1s;
+  }
