@@ -98,3 +98,11 @@ p {
     align-items: center;
     position: relative;
 }
+
+.rnum {
+    color: white;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(180deg);
+}

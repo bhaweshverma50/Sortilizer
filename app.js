@@ -52,6 +52,7 @@ function bargen(n) {
         div.className = 'bar';
         div.style.height = a[i] * 2 + 'px';
         div.style.width = 50 + 'px';
+        div.innerHTML = "<span class='rnum'>" + a[i] + "</span>";
         div.id = i;
         bar.appendChild(div);
     }
