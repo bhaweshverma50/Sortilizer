@@ -7,8 +7,9 @@ let n = 4; //initial value for no. of bars
 op.innerHTML = Barslider.value;
 Sop.innerHTML = -(Speedslider.value) + "ms";
 
-Barslider.oninput = function barval() {
+Barslider.oninput = function () {
     op.innerHTML = this.value;
+    bargen(n);
 }
 
 Speedslider.oninput = function () {
