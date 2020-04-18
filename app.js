@@ -41,17 +41,37 @@ let div;
 let a = [];
 let bar = document.getElementById("action");
 
+arrgen();
+bardel();
 bargen(n);
 
 function bargen(n) {
     for (i = 0; i < n; i++) {
         div = document.createElement('div');
-        div.className = 'bar' + i;
-        div.style.height = 30 * 2 + 'px';
+        div.className = 'bar';
+        div.style.height = a[i] * 2 + 'px';
         div.style.width = 50 + 'px';
         div.id = i;
         bar.appendChild(div);
     }
+}
+
+function bardel() {
+    let delBar = document.getElementById("action");
+    while (delBar.firstChild)
+        delBar.removeChild(delBar.firstChild);
+}
+
+function arrgen() {
+    n = Barslider.value;
+    a = [];
+    for (i = 0; i < n; i++) {
+        r = Math.round(Math.random() * 100 * 2) + 2;
+        a.push(r);
+    }
+    console.log(a);
+    bardel();
+    bargen(n);
 }
 
 function bubS() {
@@ -62,8 +82,8 @@ function bubS() {
 anime({
     targets: '.bar0',
     translateY: [{
-            value: 200,
-            duration: 1000
+            value: 20,
+            duration: 500
         },
         {
             value: 0,
@@ -72,15 +92,15 @@ anime({
     ],
     translateX: [{
         value: 108,
-        duration: 2000
+        duration: 800
     }]
 })
 
 anime({
     targets: '.bar2',
     translateY: [{
-            value: 200,
-            duration: 1000
+            value: 20,
+            duration: 500
         },
         {
             value: 0,
@@ -89,6 +109,6 @@ anime({
     ],
     translateX: [{
         value: -108,
-        duration: 2000
+        duration: 800
     }]
 })

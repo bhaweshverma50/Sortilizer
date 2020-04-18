@@ -24,9 +24,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#help">Need
+                    Help?</button>
+                <button type="button" class="btn btn-primary" onclick="arrgen()">Generate New Array</button>
                 <li class="nav-item dropdown">
                     <div class="btn-group dropright">
-                        <button type="button" class="btn btn-primary enabled" onclick="bubS()">Sort</button>
+                        <button type="button" class="btn btn-primary" onclick="bubS()" data-toggle="tooltip"
+                            data-placement="top" title="Click to Start Sorting">Sort</button>
                         <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
@@ -43,15 +47,46 @@
             </ul>
             <div>
                 <input type="range" min="-1500" max="-10" value="1500" id="speed" class="slider">
-                <p>Speed: <span id="Svalue"></span></p>
+                <p class="label">Speed: <span id="Svalue"></span></p>
             </div>
             <div>
                 <input type="range" min="4" max="200" value="4" id="myRange" class="slider">
-                <p>Bars: <span id="value"></span></p>
+                <p class="label">Numbers: <span id="value"></span></p>
             </div>
         </div>
     </nav>
     <div id="action"></div>
+    <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><b>Help</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Welcome to our web-app <b>SORTLIZER!</b> Here sorting algorithms comes to life.
+                    <p>Here you can see how different types of sorting algorithms works.</p><br>
+                    <p>Here are some simple steps to get started:</p>
+                    <ol>
+                        <li>First <b>select a sorting algorithm from the dropdown menu.</b>
+                        </li>
+                        <li>Then select the total numbers of NUMBERS you want to sort with the help of <b>Numbers</b>
+                            slider.
+                        </li>
+                        <li>Then click on the <b>Generate New Array</b> to shuffle or generate new array series.</li>
+                        <li>Then finally select the <b>Speed</b> of sorting using slider and click on <b>Sort.</b></li>
+                    </ol>
+                    <b>Bravo! Now Enjoy your sorting.</b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got It</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
