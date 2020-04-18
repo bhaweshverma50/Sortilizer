@@ -12,7 +12,7 @@ p {
     margin-bottom: 2px;
 }
 
-.slider {
+#myRange {
     -moz-appearance: none;
     -webkit-appearance: none;
     height: 10px;
@@ -28,6 +28,17 @@ p {
 }
 
 #speed {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    height: 10px;
+    outline: none;
+    opacity: 0.8;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    transition: opacity 0.2s;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 70px;
     background: linear-gradient(90deg, rgb(117, 252, 117), rgb(255, 0, 0));
 }
 
