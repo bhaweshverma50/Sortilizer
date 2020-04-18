@@ -61,10 +61,38 @@ p {
     transform: rotateX(180deg);
 }
 
-.bar {
+.bar0 {
+    background-color: red;
+    margin: 2px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bar1 {
     background-color: #F25D50;
     margin: 2px;
     border-radius: 3px;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.bar2 {
+    background-color: blue;
+    margin: 2px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bar3 {
+    background-color: #F25D50;
+    margin: 2px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }

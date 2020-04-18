@@ -46,7 +46,7 @@ bargen(n);
 function bargen(n) {
     for (i = 0; i < n; i++) {
         div = document.createElement('div');
-        div.className = 'bar';
+        div.className = 'bar' + i;
         div.style.height = 30 * 2 + 'px';
         div.style.width = 50 + 'px';
         div.id = i;
@@ -57,3 +57,37 @@ function bargen(n) {
 function bubS() {
     console.log("true");
 }
+
+anime({
+    targets: '.bar0',
+    translateY: [{
+            value: 200,
+            duration: 1000
+        },
+        {
+            value: 0,
+            duration: 500
+        }
+    ],
+    translateX: [{
+        value: 108,
+        duration: 2000
+    }]
+})
+
+anime({
+    targets: '.bar2',
+    translateY: [{
+            value: 200,
+            duration: 1000
+        },
+        {
+            value: 0,
+            duration: 500
+        }
+    ],
+    translateX: [{
+        value: -108,
+        duration: 2000
+    }]
+})
