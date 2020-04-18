@@ -1,8 +1,8 @@
 var Barslider = document.getElementById("myRange");
 var Speedslider = document.getElementById("speed");
-var op = document.getElementById("value");
-var Sop = document.getElementById("Svalue");
-let n = 4;
+var op = document.getElementById("value"); //output of bars
+var Sop = document.getElementById("Svalue"); //output of speed
+let n = 4; //initial value for no. of bars
 
 op.innerHTML = Barslider.value;
 Sop.innerHTML = -(Speedslider.value) + "ms";
@@ -22,13 +22,13 @@ Barslider.addEventListener("mousemove", function () {
     Barslider.style.background = color;
 })
 
-Speedslider.addEventListener("mousemove", function () {
-    var y = -(Speedslider.value);
-    y = y / 100;
-    var color = 'linear-gradient(90deg, rgb(117, 252, 117)' + y + '%, rgb(214, 214, 214)' + y + '%)';
-    Speedslider.style.background = color;
-    console.log(Speedslider.value);
-})
+// Speedslider.addEventListener("mousemove", function () {
+//     var y = -(Speedslider.value);
+//     y = y / 15;
+//     var color = 'linear-gradient(90deg, rgb(117, 252, 117), rgb(255, 0, 0))';
+//     Speedslider.style.background = color;
+//     console.log(Speedslider.value);
+// })
 
 $(document).ready(function () {
     $('#listel a').on('click', function () {
@@ -56,6 +56,7 @@ function bargen(n) {
 
 function bubS() {
     console.log("true");
+    console.log(f.offsetLeft);
 }
 
 anime({

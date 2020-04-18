@@ -27,6 +27,10 @@ p {
     margin-right: 70px;
 }
 
+#speed {
+    background: linear-gradient(90deg, rgb(117, 252, 117), rgb(255, 0, 0));
+}
+
 .slider:hover {
     opacity: 1;
 }
