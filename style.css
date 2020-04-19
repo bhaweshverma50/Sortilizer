@@ -42,8 +42,7 @@
 }
 
 body {
-    background-color: #f7f7f7;
-
+    background: #f7f7f7;
 }
 
 p {
@@ -132,9 +131,9 @@ p {
 .rnum {
     color: white;
     position: relative;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    transform: rotate(180deg);
+    transform: rotateX(180deg);
 }
 
 

@@ -3,13 +3,14 @@ var Speedslider = document.getElementById("speed");
 var op = document.getElementById("value"); //output of bars
 var Sop = document.getElementById("Svalue"); //output of speed
 let n = 4; //initial value for no. of bars
+let s;
+var txt;
 
 op.innerHTML = Barslider.value;
 Sop.innerHTML = -(Speedslider.value) + "ms";
 
 Barslider.oninput = function () {
     op.innerHTML = this.value;
-    bargen(n);
 }
 
 Speedslider.oninput = function () {
@@ -23,18 +24,10 @@ Barslider.addEventListener("mousemove", function () {
     Barslider.style.background = color;
 })
 
-// Speedslider.addEventListener("mousemove", function () {
-//     var y = -(Speedslider.value);
-//     y = y / 15;
-//     var color = 'linear-gradient(90deg, rgb(117, 252, 117), rgb(255, 0, 0))';
-//     Speedslider.style.background = color;
-//     console.log(Speedslider.value);
-// })
-
 $(document).ready(function () {
     $("#help").modal('show');
     $('#listel a').on('click', function () {
-        var txt = ($(this).text());
+        txt = ($(this).text());
         console.log(txt);
     })
 })
@@ -50,10 +43,11 @@ bargen(n);
 function bargen(n) {
     for (i = 0; i < n; i++) {
         div = document.createElement('div');
-        div.className = 'bar';
-        div.style.height = a[i] * 2 + 'px';
+        div.className = 'bar ' + i;
+        div.style.height = a[i] * 3 + 'px';
         div.style.width = 50 + 'px';
-        div.innerHTML = "<span class='rnum'>" + a[i] + "</span>";
+        if (n < 56)
+            div.innerHTML = "<span class='rnum'>" + a[i] + "</span>";
         div.id = i;
         bar.appendChild(div);
     }
@@ -69,7 +63,7 @@ function arrgen() {
     n = Barslider.value;
     a = [];
     for (i = 0; i < n; i++) {
-        r = Math.round(Math.random() * 100 * 2) + 2;
+        r = Math.round(Math.random() * 100 * 2) + 6;
         a.push(r);
     }
     console.log(a);
@@ -77,41 +71,151 @@ function arrgen() {
     bargen(n);
 }
 
-function bubS() {
-    console.log("true");
-    console.log(f.offsetLeft);
+function checkAlgo() {
+    if (txt == 'Bubble Sort') {
+        bubS(a);
+        console.log(a);
+    }
+    if (txt == 'Quick Sort') {
+        quickS(a, 0, n - 1);
+        console.log(a);
+    }
+    if (txt == 'Merge Sort') {
+        mergeS();
+        console.log("merge");
+    }
+    if (txt == 'Insertion Sort') {
+        insertionS();
+        console.log("insertion");
+    }
+    if (txt == 'Selection Sort') {
+        selectionS();
+        console.log("selection");
+    } else {
+        $(document).ready(function () {
+            $("#noAlgo").modal('show');
+        })
+    }
 }
 
-anime({
-    targets: '.bar0',
-    translateY: [{
-            value: 20,
-            duration: 500
-        },
-        {
-            value: 0,
-            duration: 500
-        }
-    ],
-    translateX: [{
-        value: 108,
-        duration: 800
-    }]
-})
+function swap(arr, first_Index, second_Index) {
+    var temp = arr[first_Index];
+    arr[first_Index] = arr[second_Index];
+    arr[second_Index] = temp;
 
-anime({
-    targets: '.bar2',
-    translateY: [{
-            value: 20,
-            duration: 500
-        },
-        {
-            value: 0,
-            duration: 500
+
+    anime({
+        targets: '.1',
+        translateY: [{
+                value: 20,
+                duration: 500
+            },
+            {
+                value: 0,
+                duration: 500
+            }
+        ],
+        translateX: [{
+            value: 108,
+            duration: 800
+        }]
+    })
+
+    anime({
+        targets: '.2',
+        translateY: [{
+                value: 20,
+                duration: 500
+            },
+            {
+                value: 0,
+                duration: 500
+            }
+        ],
+        translateX: [{
+            value: -108,
+            duration: 800
+        }]
+    })
+}
+
+function bubS(arr) {
+    var len = arr.length,
+        i, j, stop;
+    for (i = 0; i < len; i++) {
+        for (j = 0, stop = len - i; j < stop; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1);
+            }
         }
-    ],
-    translateX: [{
-        value: -108,
-        duration: 800
-    }]
-})
+    }
+    return arr;
+}
+
+function partition(items, left, right) {
+    var pivot = items[Math.floor((right + left) / 2)], //middle element
+        i = left, //left pointer
+        j = right; //right pointer
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            swap(items, i, j); //sawpping two elements
+            i++;
+            j--;
+        }
+    }
+    return i;
+}
+
+function quickS(items, left, right) {
+    var index;
+    if (items.length > 1) {
+        index = partition(items, left, right); //index returned from partition
+        if (left < index - 1) { //more elements on the left side of the pivot
+            quickS(items, left, index - 1);
+        }
+        if (index < right) { //more elements on the right side of the pivot
+            quickS(items, index, right);
+        }
+    }
+    return items;
+}
+
+// anime({
+//     targets: '.bar0',
+//     translateY: [{
+//             value: 20,
+//             duration: 500
+//         },
+//         {
+//             value: 0,
+//             duration: 500
+//         }
+//     ],
+//     translateX: [{
+//         value: 108,
+//         duration: 800
+//     }]
+// })
+
+// anime({
+//     targets: '.bar2',
+//     translateY: [{
+//             value: 20,
+//             duration: 500
+//         },
+//         {
+//             value: 0,
+//             duration: 500
+//         }
+//     ],
+//     translateX: [{
+//         value: -108,
+//         duration: 800
+//     }]
+// })
