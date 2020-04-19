@@ -32,6 +32,7 @@ Barslider.addEventListener("mousemove", function () {
 // })
 
 $(document).ready(function () {
+    $("#help").modal('show');
     $('#listel a').on('click', function () {
         var txt = ($(this).text());
         console.log(txt);
