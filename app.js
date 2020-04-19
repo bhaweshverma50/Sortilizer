@@ -3,11 +3,18 @@ var Speedslider = document.getElementById("speed");
 var op = document.getElementById("value"); //output of bars
 var Sop = document.getElementById("Svalue"); //output of speed
 let n = 4; //initial value for no. of bars
-let s;
+let speed;
 var txt = '';
+let divID = [];
+let divOffset = [];
+let divOffsetDiff = [];
+
+
 
 op.innerHTML = Barslider.value;
 Sop.innerHTML = -(Speedslider.value) + "ms";
+
+
 
 Barslider.oninput = function () {
     op.innerHTML = this.value;
@@ -19,12 +26,18 @@ Speedslider.oninput = function () {
     Sop.innerHTML = -(this.value) + "ms";
 }
 
+speed = -(Speedslider.value);
+
+
 Barslider.addEventListener("mousemove", function () {
     var x = Barslider.value;
     x = x / 2;
     var color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '%, rgb(214, 214, 214)' + x + '%)';
     Barslider.style.background = color;
 })
+
+
+
 
 $(document).ready(function () {
     $("#help").modal('show');
@@ -34,13 +47,19 @@ $(document).ready(function () {
     })
 })
 
+
+
+
+
 let div;
 let a = [];
 let bar = document.getElementById("action");
 
+
 arrgen();
 bardel();
 bargen(n);
+
 
 function bargen(n) {
     for (i = 0; i < n; i++) {
@@ -55,11 +74,13 @@ function bargen(n) {
     }
 }
 
+
 function bardel() {
     let delBar = document.getElementById("action");
     while (delBar.firstChild)
         delBar.removeChild(delBar.firstChild);
 }
+
 
 function arrgen() {
     n = Barslider.value;
@@ -67,16 +88,62 @@ function arrgen() {
     for (i = 0; i < n; i++) {
         r = Math.round(Math.random() * 100 * 2) + 6;
         a.push(r);
+        divID.push(i);
     }
     console.log(a);
     bardel();
     bargen(n);
 }
 
+
+var set = document.querySelectorAll('.bar');
+
+for (i = 0; i < n; i++)
+    divOffset[i] = set[i].offsetLeft, divOffsetDiff[i] = 0;
+
+
+function swapAnimation(i1, i2) {
+    var divDiff = divOffset[i2] - divOffset[i1];
+    divOffsetDiff[i1] = divOffsetDiff[i1] + divDiff;
+    divOffsetDiff[i2] = divOffsetDiff[i2] - divDiff;
+    let temp = divOffset[i1];
+    divOffset[i1] = divOffset[i2];
+    divOffset[i2] = temp;
+
+
+    const anime1 = anime.timeline({
+            easing: 'easeInOutSine',
+            dealy: anime.stagger(50),
+            loop: false,
+            autoplay: true,
+            targets: set [i1],
+            duration: speed / 2,
+        })
+
+        .add({
+            translateX: divOffsetDiff[i1],
+        })
+
+    const anime2 = anime.timeline({
+            easing: 'easeInOutSine',
+            dealy: anime.stagger(50),
+            loop: false,
+            autoplay: true,
+            targets: set [i2],
+            duration: speed / 2,
+        })
+
+        .add({
+            translateX: divOffsetDiff[i2],
+        })
+}
+
 function checkAlgo() {
     if (txt == 'Bubble Sort') {
-        bubS(a);
-        console.log(a);
+        setTimeout(function () {
+            bubS(a);
+            console.log(a);
+        }, speed);
     }
     if (txt == 'Quick Sort') {
         quickS(a, 0, n - 1);
@@ -101,35 +168,19 @@ function checkAlgo() {
     }
 }
 
-var set = document.querySelectorAll('.bar');
+
 
 function swap(arr, first_Index, second_Index) {
-    var bar1 = set[first_Index];
-    var bar2 = set[second_Index];
     var temp = arr[first_Index];
     arr[first_Index] = arr[second_Index];
     arr[second_Index] = temp;
-    swapAnimation(bar1, bar2);
+    swapAnimation(divID[first_Index], divID[second_Index]);
+    temp = divID[first_Index];
+    divID[first_Index] = divID[second_Index];
+    divID[second_Index] = temp;
 }
 
-function swapAnimation(b1, b2) {
-    var pos1 = b1.offsetLeft;
-    var pos2 = b2.offsetLeft;
-    anime({
-        targets: b1,
-        translateX: [{
-            value: pos2 - pos1,
-            duration: 1000,
-        }]
-    })
-    anime({
-        targets: b2,
-        translateX: [{
-            value: -(pos2 - pos1),
-            duration: 1000,
-        }]
-    })
-}
+
 
 function bubS(arr) {
     var len = arr.length,
@@ -143,6 +194,7 @@ function bubS(arr) {
     }
     return arr;
 }
+
 
 function partition(items, left, right) {
     var pivot = items[Math.floor((right + left) / 2)], //middle element
@@ -163,6 +215,7 @@ function partition(items, left, right) {
     }
     return i;
 }
+
 
 function quickS(items, left, right) {
     var index;
