@@ -4,13 +4,15 @@ var op = document.getElementById("value"); //output of bars
 var Sop = document.getElementById("Svalue"); //output of speed
 let n = 4; //initial value for no. of bars
 let s;
-var txt;
+var txt = '';
 
 op.innerHTML = Barslider.value;
 Sop.innerHTML = -(Speedslider.value) + "ms";
 
 Barslider.oninput = function () {
     op.innerHTML = this.value;
+    bardel();
+    arrgen(this.value);
 }
 
 Speedslider.oninput = function () {
@@ -48,7 +50,7 @@ function bargen(n) {
         div.style.width = 50 + 'px';
         if (n < 56)
             div.innerHTML = "<span class='rnum'>" + a[i] + "</span>";
-        div.id = i;
+        div.id = 'b' + i;
         bar.appendChild(div);
     }
 }
@@ -91,50 +93,40 @@ function checkAlgo() {
     if (txt == 'Selection Sort') {
         selectionS();
         console.log("selection");
-    } else {
+    }
+    if (txt == '') {
         $(document).ready(function () {
             $("#noAlgo").modal('show');
         })
     }
 }
 
+var set = document.querySelectorAll('.bar');
+
 function swap(arr, first_Index, second_Index) {
+    var bar1 = set[first_Index];
+    var bar2 = set[second_Index];
     var temp = arr[first_Index];
     arr[first_Index] = arr[second_Index];
     arr[second_Index] = temp;
+    swapAnimation(bar1, bar2);
+}
 
-
+function swapAnimation(b1, b2) {
+    var pos1 = b1.offsetLeft;
+    var pos2 = b2.offsetLeft;
     anime({
-        targets: '.1',
-        translateY: [{
-                value: 20,
-                duration: 500
-            },
-            {
-                value: 0,
-                duration: 500
-            }
-        ],
+        targets: b1,
         translateX: [{
-            value: 108,
-            duration: 800
+            value: pos2 - pos1,
+            duration: 1000,
         }]
     })
-
     anime({
-        targets: '.2',
-        translateY: [{
-                value: 20,
-                duration: 500
-            },
-            {
-                value: 0,
-                duration: 500
-            }
-        ],
+        targets: b2,
         translateX: [{
-            value: -108,
-            duration: 800
+            value: -(pos2 - pos1),
+            duration: 1000,
         }]
     })
 }
@@ -185,37 +177,3 @@ function quickS(items, left, right) {
     }
     return items;
 }
-
-// anime({
-//     targets: '.bar0',
-//     translateY: [{
-//             value: 20,
-//             duration: 500
-//         },
-//         {
-//             value: 0,
-//             duration: 500
-//         }
-//     ],
-//     translateX: [{
-//         value: 108,
-//         duration: 800
-//     }]
-// })
-
-// anime({
-//     targets: '.bar2',
-//     translateY: [{
-//             value: 20,
-//             duration: 500
-//         },
-//         {
-//             value: 0,
-//             duration: 500
-//         }
-//     ],
-//     translateX: [{
-//         value: -108,
-//         duration: 800
-//     }]
-// })
