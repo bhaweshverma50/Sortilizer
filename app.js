@@ -117,7 +117,7 @@ function swapAnimation(i1, i2) {
             loop: false,
             autoplay: true,
             targets: set [i1],
-            duration: speed / 2,
+            //duration: speed / 2,
         })
 
         .add({
@@ -130,7 +130,7 @@ function swapAnimation(i1, i2) {
             loop: false,
             autoplay: true,
             targets: set [i2],
-            duration: speed / 2,
+            //duration: speed / 2,
         })
 
         .add({
@@ -158,7 +158,7 @@ function checkAlgo() {
         console.log("insertion");
     }
     if (txt == 'Selection Sort') {
-        selectionS();
+        selectionS(a);
         console.log("selection");
     }
     if (txt == '') {
@@ -228,5 +228,32 @@ function quickS(items, left, right) {
             quickS(items, index, right);
         }
     }
+    return items;
+}
+
+
+function selectionSort(items) {
+
+    var len = items.length,
+        min;
+
+    for (i = 0; i < len; i++) {
+
+        //set minimum to this position
+        min = i;
+
+        //check the rest of the array to see if anything is smaller
+        for (j = i + 1; j < len; j++) {
+            if (items[j] < items[min]) {
+                min = j;
+            }
+        }
+
+        //if the minimum isn't in the position, swap it
+        if (i != min) {
+            swap(items, i, min);
+        }
+    }
+
     return items;
 }
