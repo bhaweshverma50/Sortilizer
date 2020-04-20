@@ -8,6 +8,7 @@ var txt = '';
 let divID = [];
 let divOffset = [];
 let divOffsetDiff = [];
+let set;
 
 
 
@@ -59,8 +60,8 @@ let bar = document.getElementById("action");
 
 
 arrgen();
-bardel();
-bargen(n);
+// bardel();
+// bargen(n);
 
 
 function bargen(n) {
@@ -74,6 +75,9 @@ function bargen(n) {
         div.id = 'b' + i;
         bar.appendChild(div);
     }
+    set = document.querySelectorAll('.bar');
+    for (i = 0; i < n; i++)
+        divOffset[i] = set[i].offsetLeft, divOffsetDiff[i] = 0;
 }
 
 
@@ -87,6 +91,7 @@ function bardel() {
 function arrgen() {
     n = Barslider.value;
     a = [];
+    divID = [];
     for (i = 0; i < n; i++) {
         r = Math.round(Math.random() * 100 * 2) + 6;
         a.push(r);
@@ -98,10 +103,6 @@ function arrgen() {
 }
 
 
-var set = document.querySelectorAll('.bar');
-
-for (i = 0; i < n; i++)
-    divOffset[i] = set[i].offsetLeft, divOffsetDiff[i] = 0;
 
 
 function swapAnimation(i1, i2) {
