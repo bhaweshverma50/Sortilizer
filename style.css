@@ -106,6 +106,17 @@ p {
     cursor: pointer;
 }
 
+#view {
+    color: #f7f7f7;
+    display: flex;
+    position: relative;
+    top: 10px;
+    left: 150px;
+    font-size: 20px;
+    font-weight: 1px;
+    font-family: reross-quadratic, sans-serif;
+}
+
 #action {
 
     position: relative;

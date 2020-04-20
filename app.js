@@ -43,6 +43,8 @@ $(document).ready(function () {
     $("#help").modal('show');
     $('#listel a').on('click', function () {
         txt = ($(this).text());
+        var a = document.getElementById('view');
+        a.innerHTML = txt;
         console.log(txt);
     })
 })
