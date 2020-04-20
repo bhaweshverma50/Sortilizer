@@ -143,21 +143,25 @@ function swapAnimation(i1, i2) {
 
 function checkAlgo() {
     if (txt == 'Bubble Sort') {
-        setTimeout(function () {
-            bubS(a);
-            console.log(a);
-        }, speed);
+        bubS(a);
+        console.log(a);
     }
     if (txt == 'Quick Sort') {
         quickS(a, 0, n - 1);
         console.log(a);
     }
     if (txt == 'Merge Sort') {
-        mergeS();
+        // mergeS();
+        $(document).ready(function () {
+            $("#incomplete").modal('show');
+        })
         console.log("merge");
     }
     if (txt == 'Insertion Sort') {
-        insertionS();
+        // insertionS();
+        $(document).ready(function () {
+            $("#incomplete").modal('show');
+        })
         console.log("insertion");
     }
     if (txt == 'Selection Sort') {
@@ -235,7 +239,7 @@ function quickS(items, left, right) {
 }
 
 
-function selectionSort(items) {
+function selectionS(items) {
 
     var len = items.length,
         min;
