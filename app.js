@@ -27,7 +27,6 @@ Speedslider.oninput = function () {
     Sop.innerHTML = -(this.value) + "ms";
 }
 
-speed = -(Speedslider.value);
 
 
 Barslider.addEventListener("mousemove", function () {
@@ -189,21 +188,25 @@ function swap(arr, first_Index, second_Index) {
 
 
 
-function bubS(arr) {
+async function bubS(arr) {
     var len = arr.length,
         i, j, stop;
     for (i = 0; i < len; i++) {
         for (j = 0, stop = len - i; j < stop; j++) {
             if (arr[j] > arr[j + 1]) {
                 swap(arr, j, j + 1);
+                // await this.timeout(10);
             }
+            speed = -(Speedslider.value);
+            await this.timeout(speed);
         }
+        await this.timeout(100);
     }
     return arr;
 }
 
 
-function partition(items, left, right) {
+async function partition(items, left, right) {
     var pivot = items[Math.floor((right + left) / 2)], //middle element
         i = left, //left pointer
         j = right; //right pointer
@@ -219,27 +222,35 @@ function partition(items, left, right) {
             i++;
             j--;
         }
+        speed = -(Speedslider.value);
+        await this.timeout(speed)
     }
     return i;
 }
 
 
-function quickS(items, left, right) {
+async function quickS(items, left, right) {
     var index;
     if (items.length > 1) {
         index = partition(items, left, right); //index returned from partition
         if (left < index - 1) { //more elements on the left side of the pivot
             quickS(items, left, index - 1);
         }
+        speed = -(Speedslider.value);
+        await this.timeout(speed);
         if (index < right) { //more elements on the right side of the pivot
             quickS(items, index, right);
         }
+        speed = -(Speedslider.value);
+        await this.timeout(speed);
     }
+    speed = -(Speedslider.value);
+    await this.timeout(speed);
     return items;
 }
 
 
-function selectionS(items) {
+async function selectionS(items) {
 
     var len = items.length,
         min;
@@ -260,7 +271,13 @@ function selectionS(items) {
         if (i != min) {
             swap(items, i, min);
         }
+        speed = -(Speedslider.value);
+        await this.timeout(speed);
     }
 
     return items;
+}
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
 }
