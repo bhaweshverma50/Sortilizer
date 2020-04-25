@@ -119,10 +119,12 @@ function swapAnimation(i1, i2) {
             loop: false,
             autoplay: true,
             targets: set [i1],
+            delay: anime.stagger(100)
             //duration: speed / 2,
         })
 
         .add({
+            //backgroundColor: 'rgb(10, 151, 22)',
             translateX: divOffsetDiff[i1],
         })
 
@@ -132,13 +134,16 @@ function swapAnimation(i1, i2) {
             loop: false,
             autoplay: true,
             targets: set [i2],
+
             //duration: speed / 2,
         })
 
         .add({
+            //backgroundColor: 'rgb(197, 197, 255)',
             translateX: divOffsetDiff[i2],
         })
 }
+
 
 function checkAlgo() {
     if (txt == 'Bubble Sort') {
