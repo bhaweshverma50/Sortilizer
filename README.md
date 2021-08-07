@@ -1,10 +1,11 @@
-# Sortilizer | A Sorting Visualizer
+# [Sortilizer | A Sorting Visualizer](https://bhaweshverma50.github.io/Sortilizer/)
 
-[![Sortilizer.gif](https://s6.gifyu.com/images/Sortilizer.gif)](https://gifyu.com/image/yMba)
+[![Sortilizer.gif](https://s6.gifyu.com/images/Sortilizer.gif)](https://gifyu.com/image/yMba "sortilizer_example.gif")
 
 ## About
 Welcome to our repository! Here we have tried to implement sorting algorithms and make it visualize using basic HTML, CSS and Javascipt.
 Here you can see how different types of sorting algorithms works.
+**Link** : https://bhaweshverma50.github.io/Sortilizer/
 
 ## Getting Started
 Here are some simple steps to get started:
