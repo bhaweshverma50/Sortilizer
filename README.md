@@ -1,3 +1,4 @@
-# sorting_visualizer
-sorting visualizer is website to visualize algorithms that will help you to understand algorithms.
-it has option to select a algorithm, increase or decrease speed of animation.
+# Sortilizer | A Sorting Visualizer
+![Sortilizer.gif](https://gifyu.com/image/yMba)
+## About
+
