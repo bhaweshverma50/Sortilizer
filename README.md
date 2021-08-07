@@ -5,6 +5,8 @@
 ## About
 Welcome to our repository! Here we have tried to implement sorting algorithms and make it visualize using basic HTML, CSS and Javascipt.
 Here you can see how different types of sorting algorithms works.
+
+
 **Link** : https://bhaweshverma50.github.io/Sortilizer/
 
 ## Getting Started
